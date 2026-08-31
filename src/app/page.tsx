@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Music, Sparkles, PartyPopper, Crown, Info, Github, Linkedin, Instagram, Mic2, Disc, Radio } from "lucide-react";
+import { Music, Sparkles, PartyPopper, Crown, Info, Mic2, Disc, Radio } from "lucide-react";
 
 export default function Home() {
   const [showIntro, setShowIntro] = useState(true);
@@ -23,7 +23,6 @@ export default function Home() {
           <div className="flex-grow pb-16 flex flex-col items-center w-full z-10 relative">
             <BackgroundIcons />
             <RegistrationForm key="form" />
-            <Footer />
           </div>
         )}
       </AnimatePresence>
@@ -56,32 +55,6 @@ function BackgroundIcons() {
         <Radio className="w-20 h-20" />
       </motion.div>
     </div>
-  );
-}
-
-function Footer() {
-  return (
-    <motion.footer 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.5, duration: 1 }}
-      className="mt-12 text-center text-purple-800 z-10"
-    >
-      <p className="text-sm font-medium mb-3">
-        Made with by <span className="text-pink-600 font-bold tracking-wide">Lakshya Goyal</span>
-      </p>
-      <div className="flex items-center justify-center gap-6">
-        <a href="https://linkedin.com/in/lakshya13/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 hover:scale-125 transition-transform duration-300">
-          <Linkedin className="w-6 h-6" />
-        </a>
-        <a href="https://github.com/lakshya1304" target="_blank" rel="noopener noreferrer" className="hover:text-black hover:scale-125 transition-transform duration-300">
-          <Github className="w-6 h-6" />
-        </a>
-        <a href="https://instagram.com/its.lakshya.13" target="_blank" rel="noopener noreferrer" className="hover:text-pink-600 hover:scale-125 transition-transform duration-300">
-          <Instagram className="w-6 h-6" />
-        </a>
-      </div>
-    </motion.footer>
   );
 }
 
@@ -124,7 +97,7 @@ function IntroAnimation() {
           transition={{ delay: 2.5, duration: 1 }}
           className="mt-8 text-sm sm:text-lg text-purple-900 font-bold animate-pulse"
         >
-          Tuning the mics... dropping the bass... igniting the night!
+          Tuning the mics... dropping the bass... igniting the day!
         </motion.p>
       </motion.div>
     </motion.div>
@@ -196,12 +169,24 @@ function RegistrationForm() {
         animate={{ opacity: 1, scale: 1 }}
         className="min-h-[70vh] flex items-center justify-center p-4 z-10"
       >
-        <div className="glass-panel p-6 sm:p-10 rounded-3xl text-center max-w-md w-full animate-float">
-          <PartyPopper className="w-20 h-20 text-pink-500 mx-auto mb-6 animate-bounce" />
-          <h2 className="text-3xl sm:text-4xl font-space-grotesk font-black mb-4 party-title">YOU'RE IN! 🎉</h2>
-          <p className="text-purple-800 text-lg font-bold">Your VIP ticket to Shubharambh 2.0 is confirmed.</p>
-          <p className="mt-4 text-purple-900 font-bold">Dress to kill. Ready to thrill.</p>
-          <p className="mt-6 text-pink-600 font-black text-xl">See you on the dance floor! 🎤✨</p>
+        <div className="glass-panel p-6 sm:p-10 rounded-3xl text-center max-w-lg w-full animate-float shadow-2xl">
+          <PartyPopper className="w-20 h-20 text-pink-500 mx-auto mb-4 animate-bounce" />
+          <h2 className="text-3xl sm:text-4xl font-space-grotesk font-black mb-2 party-title">YOU'RE ON THE LIST! 🎉</h2>
+          <p className="text-purple-900 text-lg font-bold">Your response for Shubharambh 2.0 has been recorded successfully!</p>
+          
+          <div className="bg-white/70 border-2 border-purple-200 rounded-2xl p-5 my-5 text-left shadow-sm">
+            <p className="text-pink-600 font-black text-sm uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <Sparkles className="w-4 h-4" /> Important Note
+            </p>
+            <p className="text-purple-900 font-medium text-sm leading-relaxed">
+              This form is for <strong>enquiry & interest collection</strong> purpose only.
+            </p>
+            <p className="text-purple-800 text-sm mt-2 leading-relaxed">
+              Our organizing team will reach out to you shortly with official <strong>passes, payment collection details, and the event schedule</strong>.
+            </p>
+          </div>
+
+          <p className="text-pink-600 font-black text-lg">Dress to kill, ready to thrill! See you on the dance floor! 🎤✨</p>
         </div>
       </motion.div>
     );
@@ -228,7 +213,7 @@ function RegistrationForm() {
         
         <div className="glass-panel p-6 rounded-2xl mt-6 mb-8 inline-block text-center relative group hover:scale-[1.02] transition-transform duration-300 w-full">
           <p className="text-pink-600 font-black text-xl md:text-2xl mb-3 uppercase tracking-wide">
-            The Most Anticipated Night of the Year! 🌟
+            The Most Anticipated Day of the Year! 🌟
           </p>
           <p className="text-purple-900 font-bold text-base md:text-lg mb-4">
             Unlimited Feast 🍕 | Electrifying DJ Beats 🎧 | Unforgettable Memories ✨
@@ -238,11 +223,12 @@ function RegistrationForm() {
           </p>
         </div>
 
-        <div className="flex items-center justify-center gap-3 text-red-600 font-bold bg-white/50 backdrop-blur-md p-4 rounded-xl border-2 border-red-400/50 shadow-lg mx-auto max-w-2xl">
-          <Info className="w-8 h-8 md:w-6 md:h-6 animate-pulse shrink-0" />
-          <span className="uppercase text-xs md:text-sm tracking-widest text-left">
-            Disclaimer: An independent event. Not affiliated with or conducted by the college. Hosted outside campus premises.
-          </span>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 text-red-600 font-bold bg-white/60 backdrop-blur-md p-4 rounded-xl border-2 border-red-400/50 shadow-lg mx-auto max-w-2xl text-left">
+          <Info className="w-8 h-8 md:w-6 md:h-6 animate-pulse shrink-0 text-red-500" />
+          <div className="text-xs md:text-sm tracking-wide text-red-700 leading-relaxed font-semibold">
+            <p className="font-black uppercase tracking-wider text-red-600 mb-0.5">Disclaimer & Event Notice:</p>
+            <p>This event is independently organized by your seniors for tech students. There is no role, affiliation, or involvement of the university. The party will be held entirely outside the campus premises.</p>
+          </div>
         </div>
       </header>
 
