@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --font-outfit: var(--font-outfit), sans-serif;
+  --font-space-grotesk: var(--font-space-grotesk), sans-serif;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+/* Party Animations */
+@keyframes energyBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.energy-bg {
+  background: linear-gradient(45deg, #fbcfe8, #e9d5ff, #bfdbfe, #fbcfe8, #ddd6fe);
+  background-size: 300% 300%;
+  animation: energyBG 8s ease infinite;
+}
+
+.party-title {
+  background: linear-gradient(to right, #ec4899, #8b5cf6, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(236,72,153,0.3);
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 10px rgba(236, 72, 153, 0.5); }
+  50% { box-shadow: 0 0 25px rgba(139, 92, 246, 0.8); }
+  100% { box-shadow: 0 0 10px rgba(236, 72, 153, 0.5); }
+}
