@@ -126,6 +126,7 @@ function RegistrationForm() {
     "group song",
     "solo dance",
     "solo song",
+    "Not interested in activities",
   ];
 
   const handleCheckboxChange = (activity: string) => {
