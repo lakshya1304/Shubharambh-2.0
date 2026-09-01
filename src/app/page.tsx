@@ -302,8 +302,7 @@ function RegistrationForm() {
             <select required value={formData.passType} onChange={e => setFormData({...formData, passType: e.target.value})} className="w-full bg-white/70 border-2 border-purple-200 rounded-xl p-4 text-purple-900 font-bold focus:outline-none focus:border-pink-500 focus:ring-4 focus:ring-pink-500/30 transition-all shadow-inner">
               <option value="" disabled>Select pass...</option>
               <option value="Fresher">Fresher (₹500)</option>
-              <option value="2nd Year">2nd Year (₹600)</option>
-              <option value="3rd/4th Year">3rd & 4th Year (₹1000)</option>
+              <option value="Seniors">Seniors (₹650)</option>
             </select>
           </div>
         </div>
