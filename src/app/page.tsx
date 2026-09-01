@@ -132,10 +132,20 @@ function RegistrationForm() {
   const handleCheckboxChange = (activity: string) => {
     setFormData((prev) => {
       const isSelected = prev.activities.includes(activity);
+      
+      if (activity === "Not interested in activities") {
+        if (isSelected) {
+          return { ...prev, activities: [] };
+        } else {
+          return { ...prev, activities: ["Not interested in activities"] };
+        }
+      }
+
       if (isSelected) {
         return { ...prev, activities: prev.activities.filter((a) => a !== activity) };
       } else {
-        return { ...prev, activities: [...prev.activities, activity] };
+        const newActivities = prev.activities.filter((a) => a !== "Not interested in activities");
+        return { ...prev, activities: [...newActivities, activity] };
       }
     });
   };
@@ -300,20 +310,26 @@ function RegistrationForm() {
         <div className="border-t-2 border-purple-200/50 pt-8 relative z-10">
           <h3 className="text-2xl font-space-grotesk mb-6 text-purple-900 font-black">🎤 Select Your Activities:</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {activitiesList.map((activity) => (
-              <label key={activity} className="flex items-center gap-4 cursor-pointer group p-2 hover:bg-white/40 rounded-xl transition-colors">
-                <div className="relative flex items-center justify-center w-7 h-7 shrink-0 border-2 border-pink-500 rounded-lg group-hover:scale-110 transition-transform">
-                  <input
-                    type="checkbox"
-                    className="absolute opacity-0 cursor-pointer"
-                    checked={formData.activities.includes(activity)}
-                    onChange={() => handleCheckboxChange(activity)}
-                  />
-                  {formData.activities.includes(activity) && <div className="w-4 h-4 bg-pink-500 rounded-md"></div>}
-                </div>
-                <span className="text-base capitalize text-purple-800 font-bold group-hover:text-pink-600 transition-colors leading-tight">{activity}</span>
-              </label>
-            ))}
+            {activitiesList.map((activity) => {
+              const isNotInterestedSelected = formData.activities.includes("Not interested in activities");
+              const isDisabled = isNotInterestedSelected && activity !== "Not interested in activities";
+              
+              return (
+                <label key={activity} className={`flex items-center gap-4 group p-2 rounded-xl transition-colors ${isDisabled ? "opacity-50 cursor-not-allowed grayscale" : "cursor-pointer hover:bg-white/40"}`}>
+                  <div className={`relative flex items-center justify-center w-7 h-7 shrink-0 border-2 rounded-lg transition-transform ${isDisabled ? "border-gray-400" : "border-pink-500 group-hover:scale-110"}`}>
+                    <input
+                      type="checkbox"
+                      className={`absolute opacity-0 ${isDisabled ? "cursor-not-allowed" : "cursor-pointer"}`}
+                      checked={formData.activities.includes(activity)}
+                      onChange={() => handleCheckboxChange(activity)}
+                      disabled={isDisabled}
+                    />
+                    {formData.activities.includes(activity) && <div className={`w-4 h-4 rounded-md ${isDisabled ? "bg-gray-400" : "bg-pink-500"}`}></div>}
+                  </div>
+                  <span className={`text-base capitalize font-bold leading-tight transition-colors ${isDisabled ? "text-gray-500" : "text-purple-800 group-hover:text-pink-600"}`}>{activity}</span>
+                </label>
+              );
+            })}
           </div>
         </div>
 
