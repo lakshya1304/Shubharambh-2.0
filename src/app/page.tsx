@@ -291,6 +291,7 @@ function RegistrationForm() {
               <option value="BTech">BTech</option>
               <option value="Diploma">Diploma</option>
               <option value="BCA">BCA</option>
+              <option value="MCA">MCA</option>
             </select>
           </div>
 
