@@ -15,8 +15,7 @@ export async function POST(req: Request) {
     // Determine pass amount
     let amount = 0;
     if (data.passType === "Fresher") amount = 500;
-    else if (data.passType === "2nd Year") amount = 600;
-    else if (data.passType === "3rd/4th Year") amount = 1000;
+    else if (data.passType === "Seniors") amount = 650;
 
     const registration = await prisma.registration.create({
       data: {
